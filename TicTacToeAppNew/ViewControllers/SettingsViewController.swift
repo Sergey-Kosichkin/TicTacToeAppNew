@@ -9,9 +9,11 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    //MARK: - What to do next
 //    Think about black color theme for background
 //    Think about low power mode functions
 //    Think about text color and background (auto ios theme changing)
+//    Maybe create number of points for corner radius in model
     
     
     
@@ -192,7 +194,6 @@ class SettingsViewController: UIViewController {
         setBackgroundColor(setting.backgroundColor)
     }
     
-//        Maybe create number of points for corner radius in model
     private func setupUI() {
         // Set buttons corner radius
         saveButton.layer.cornerRadius = 10
@@ -206,6 +207,7 @@ class SettingsViewController: UIViewController {
             colorButton.titleLabel?.font = .systemFont(ofSize: colorButton.layer.bounds.height / 5)
         }
     }
+    
     
     
 }
