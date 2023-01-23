@@ -5,6 +5,7 @@
 //  Created by Sergey Kosichkin on 15.01.2023.
 //
 
+import UIKit
 
 class GameDataManager {
 
@@ -30,6 +31,12 @@ class SettingsDataManager {
     
     let computerParameters = ComputerParameter()
     
+    let color: [UIColor] = [.systemGray,
+                            .systemTeal,
+                            .systemBrown,
+                            .systemOrange]
+    
+    
     private init() {}
 }
 
@@ -51,3 +58,6 @@ struct ComputerParameter {
                                90 : 1,
                                100 : 0]
 }
+
+
+

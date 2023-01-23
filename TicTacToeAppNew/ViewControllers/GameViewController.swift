@@ -7,6 +7,17 @@
 
 import UIKit
 
+
+protocol SettingsViewControllerDelegate {
+    func setNewSettings(from setting: Setting)
+}
+
+protocol gameInfoViewControllerDelegate {
+    func passDataThrough(from gameInfo: Game)
+}
+
+
+
 class GameViewController: UIViewController {
     
     
@@ -20,13 +31,21 @@ class GameViewController: UIViewController {
     @IBOutlet var drawsLabel: UILabel!
     
     
+    
+    private var setting = Setting(backgroundColor: .gray,
+                                  gameMode: .person,
+                                  computer: CompSetting(manualDifficultyLevel: 70,
+                                                        autoDifficultyLevel: 30,
+                                                        autoDifficultyIsEnabled: true),
+                                  lowPower: false)
+    
     private var gameInfo = Game(gameStatus: .notStarted,
-                            currentMove: 1,
-                            currentSign: .x,
-                            resultCount: Count(o: 0,
-                                             x: 0,
-                                             draw: 0),
-                            currentWinPattern: [])
+                                currentMove: 1,
+                                currentSign: .x,
+                                resultCount: Count(o: 0,
+                                                   x: 0,
+                                                   draw: 0),
+                                currentWinPattern: [])
     
     private var gameRules = GameDataManager.shared
     
@@ -45,8 +64,16 @@ class GameViewController: UIViewController {
         
         displayCurrentMoveText()
         
+//        NotificationCenter.default.addObserver(self, selector: #selector(powerStateChanged), name: Notification.Name.NSProcessInfoPowerStateDidChange, object: nil)
         
+        
+//        setting.lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
     }
+    
+//    @objc func powerStateChanged(_ notification: Notification) {
+//        setting.lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
+//        // take appropriate action
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,11 +82,28 @@ class GameViewController: UIViewController {
         
         colorFigures()
         
+        changeBackgroundColor()
+        
+//        updateCountsLabels()
+        
         
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let settingsVC = segue.destination as? SettingsViewController {
+            settingsVC.setting = setting
+            settingsVC.delegate = self
+        }
+        
+        if let statVC = segue.destination as? StatisticsViewController {
+            statVC.setting = setting
+            statVC.gameInfo = gameInfo
+            statVC.delegate = self
+        }
+        
+    }
     
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -80,7 +124,7 @@ class GameViewController: UIViewController {
         updateCountsLabels()
         
         
-        generateFeedback(withHapticType: hapticType)
+        generateFeedback(withHapticType: hapticType, whenLowPower: setting.lowPower)
     }
     
     @IBAction func restartButtonPressed() {
@@ -94,8 +138,25 @@ class GameViewController: UIViewController {
         resetPatterns()
 //        cleanWinNumbers()
         
-        generateFeedback(withHapticType: .heavy)
+        generateFeedback(withHapticType: .heavy, whenLowPower: setting.lowPower)
     }
+    
+    
+    
+    func updateCountsLabels() {
+        xWinsLabel.text = "X: \(gameInfo.resultCount.x)"
+        oWinsLabel.text = "O: \(gameInfo.resultCount.o)"
+        drawsLabel.text = "Draws: \(gameInfo.resultCount.draw)"
+        
+//        if gameInfo.gameStatus == .win {
+//
+//        } else if gameInfo.gameStatus == .draw {
+//
+//        }
+        
+    }
+    
+    
     
     
     // MARK: - Functions for Play Buttons
@@ -255,14 +316,7 @@ class GameViewController: UIViewController {
     }
     
     
-    private func updateCountsLabels() {
-        if gameInfo.gameStatus == .win {
-            xWinsLabel.text = "X: \(gameInfo.resultCount.x)"
-            oWinsLabel.text = "O: \(gameInfo.resultCount.o)"
-        } else if gameInfo.gameStatus == .draw {
-            drawsLabel.text = "Draws: \(gameInfo.resultCount.draw)"
-        }
-    }
+   
     
     
     
@@ -325,8 +379,35 @@ class GameViewController: UIViewController {
         restartButton.titleLabel?.font = .systemFont(ofSize: buttons[0].layer.bounds.height / 4)
     }
     
+    private func changeBackgroundColor() {
+//        view.backgroundColor = setting.backgroundColor
+        setBackgroundColor(setting.backgroundColor)
+    }
     
     
 }
 
 
+extension GameViewController: SettingsViewControllerDelegate {
+    
+    func setNewSettings(from setting: Setting) {
+        self.setting = setting
+    }
+
+}
+
+
+extension GameViewController: gameInfoViewControllerDelegate {
+    
+    func passDataThrough(from gameInfo: Game) {
+        self.gameInfo = gameInfo
+        
+        updateCountsLabels()
+        restartButtonPressed()
+        
+//            xWinsLabel.text = "X: \(gameInfo.resultCount.x)"
+//            oWinsLabel.text = "O: \(gameInfo.resultCount.o)"
+//            drawsLabel.text = "Draws: \(gameInfo.resultCount.draw)"
+    }
+    
+}

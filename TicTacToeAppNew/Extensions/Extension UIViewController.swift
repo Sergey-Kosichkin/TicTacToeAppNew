@@ -26,8 +26,11 @@ extension UIViewController {
     }
     
     
-    func generateFeedback(withHapticType haptic: TapticEngine) {
+    func generateFeedback(withHapticType haptic: TapticEngine,
+                          whenLowPower lowPower: Bool) {
 
+        guard !lowPower else { return }
+        
         switch haptic {
             
         case .selection:
@@ -60,6 +63,10 @@ extension UIViewController {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }
+    }
+    
+    func setBackgroundColor(_ color: ThemeColor) {
+        view.backgroundColor = SettingsDataManager.shared.color[color.rawValue]
     }
     
 }

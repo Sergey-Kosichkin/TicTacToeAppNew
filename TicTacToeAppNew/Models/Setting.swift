@@ -8,9 +8,10 @@
 import UIKit
 
 struct Setting {
-    var backgroundColor: UIColor
+    var backgroundColor: ThemeColor
     var gameMode: GameMode
-    var computerSettings: ComputerSettings
+    var computer: CompSetting
+    var lowPower: Bool
 }
 
 
@@ -19,15 +20,19 @@ enum GameMode {
     case computer
 }
 
-struct ComputerSettings {
-    var manualDifficultyLevel: Int
-    var autoDifficultyLevel: Int
-    var autoDifficultyStatus: State
+struct CompSetting {
+    var manualDifficultyLevel: Float
+    var autoDifficultyLevel: Float
+    var autoDifficultyIsEnabled: Bool
     
 }
 
 
-enum State {
-    case enabled
-    case disabled
+enum ThemeColor: Int, CaseIterable {
+    
+    case gray = 0
+    case blue = 1
+    case brown = 2
+    case orange = 3
+    
 }
