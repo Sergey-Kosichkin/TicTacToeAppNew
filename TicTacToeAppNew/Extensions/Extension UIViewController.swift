@@ -65,7 +65,7 @@ extension UIViewController {
         }
     }
     
-    func setBackgroundColor(_ color: ThemeColor) {
+    func changeBackgroundColor(to color: ThemeColor) {
         view.backgroundColor = SettingsDataManager.shared.color[color.rawValue]
     }
     

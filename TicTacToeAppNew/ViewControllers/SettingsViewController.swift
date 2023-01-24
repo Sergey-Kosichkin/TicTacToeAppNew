@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
         
         generateFeedback(withHapticType: .rigid, whenLowPower: setting.lowPower)
         
-//                        setting.lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
+//        setting.lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,7 +191,7 @@ class SettingsViewController: UIViewController {
     
     //MARK: - Other private functions
     private func setBackgroundColor() {
-        setBackgroundColor(setting.backgroundColor)
+        changeBackgroundColor(to: setting.backgroundColor)
     }
     
     private func setupUI() {

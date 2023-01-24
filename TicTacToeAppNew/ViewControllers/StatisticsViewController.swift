@@ -30,7 +30,7 @@ class StatisticsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setBackgroundColor(setting.backgroundColor)
+        changeBackgroundColor(to: setting.backgroundColor)
         checkForResultCounts()
     }
     
