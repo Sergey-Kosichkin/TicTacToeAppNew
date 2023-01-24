@@ -381,7 +381,7 @@ class GameViewController: UIViewController {
     
     private func changeBackgroundColor() {
 //        view.backgroundColor = setting.backgroundColor
-        setBackgroundColor(setting.backgroundColor)
+        changeBackgroundColor(to: setting.backgroundColor)
     }
     
     
