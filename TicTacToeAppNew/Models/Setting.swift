@@ -7,19 +7,15 @@
 
 import UIKit
 
+//MARK: - Main Setting model structure
 struct Setting {
     var backgroundColor: ThemeColor
     var gameMode: GameMode
     var computer: CompSetting
-    var lowPower: Bool
 }
 
 
-enum GameMode {
-    case person
-    case computer
-}
-
+//MARK: - Supporting structures
 struct CompSetting {
     var manualDifficultyLevel: Float
     var autoDifficultyLevel: Float
@@ -28,11 +24,16 @@ struct CompSetting {
 }
 
 
+//MARK: - Supporting enumerations
 enum ThemeColor: Int, CaseIterable {
-    
     case gray = 0
     case blue = 1
     case brown = 2
     case orange = 3
-    
 }
+
+enum GameMode {
+    case person
+    case computer
+}
+

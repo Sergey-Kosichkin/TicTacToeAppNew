@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     
-    enum TapticEngine {
+    enum HapticType {
         case selection
         
         case light
@@ -22,17 +22,11 @@ extension UIViewController {
         case success
         case warning
         case error
-        
     }
     
     
-    func generateFeedback(withHapticType haptic: TapticEngine,
-                          whenLowPower lowPower: Bool) {
-
-        guard !lowPower else { return }
-        
+    func generateFeedback(withHapticType haptic: HapticType) {
         switch haptic {
-            
         case .selection:
             let generator = UISelectionFeedbackGenerator()
             generator.selectionChanged()

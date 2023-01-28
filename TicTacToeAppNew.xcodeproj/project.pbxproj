@@ -20,6 +20,7 @@
 		9674938B297437D900EB9103 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674938A297437D900EB9103 /* Setting.swift */; };
 		9674938D297437E600EB9103 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674938C297437E600EB9103 /* Statistic.swift */; };
 		9674939129743BE000EB9103 /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674939029743BE000EB9103 /* GameDataManager.swift */; };
+		96C46C3F29822388006F7D48 /* GameEngineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C46C3E29822388006F7D48 /* GameEngineVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9674938A297437D900EB9103 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		9674938C297437E600EB9103 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		9674939029743BE000EB9103 /* GameDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
+		96C46C3E29822388006F7D48 /* GameEngineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +73,11 @@
 			isa = PBXGroup;
 			children = (
 				96749384297435D700EB9103 /* ViewControllers */,
-				967493862974361D00EB9103 /* StoryBoards */,
-				96749389297437B600EB9103 /* Models */,
-				9674939229743BF000EB9103 /* Service Layers */,
+				96C46C4029822395006F7D48 /* GameVC */,
 				96749385297435FE00EB9103 /* Extensions */,
+				96749389297437B600EB9103 /* Models */,
+				967493862974361D00EB9103 /* StoryBoards */,
+				9674939229743BF000EB9103 /* Service Layers */,
 				9674938F2974382100EB9103 /* Supporting */,
 				9674938E2974380000EB9103 /* Resources */,
 			);
@@ -142,6 +145,14 @@
 				9674939029743BE000EB9103 /* GameDataManager.swift */,
 			);
 			path = "Service Layers";
+			sourceTree = "<group>";
+		};
+		96C46C4029822395006F7D48 /* GameVC */ = {
+			isa = PBXGroup;
+			children = (
+				96C46C3E29822388006F7D48 /* GameEngineVC.swift */,
+			);
+			path = GameVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +234,7 @@
 				964EA8B429729D880098059B /* SceneDelegate.swift in Sources */,
 				9674938329740CC800EB9103 /* StatisticsViewController.swift in Sources */,
 				967493812974023400EB9103 /* Extension UIViewController.swift in Sources */,
+				96C46C3F29822388006F7D48 /* GameEngineVC.swift in Sources */,
 				9674938B297437D900EB9103 /* Setting.swift in Sources */,
 				964EA8C6297301CF0098059B /* SettingsViewController.swift in Sources */,
 			);
@@ -370,7 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = HW5V2H79D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TicTacToeAppNew/Supporting/Info.plist;
@@ -384,7 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Sergey-Kosichkin.TicTacToeAppNew";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -399,7 +411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = HW5V2H79D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TicTacToeAppNew/Supporting/Info.plist;
@@ -413,7 +425,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Sergey-Kosichkin.TicTacToeAppNew";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

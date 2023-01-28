@@ -11,14 +11,25 @@ class GameDataManager {
 
     static let shared = GameDataManager()
     
-    var winPatterns: [[Int] : WinnerState] = [[0, 1, 2] : .notChecked,
-                                              [3, 4, 5] : .notChecked,
-                                              [6, 7, 8] : .notChecked,
-                                              [0, 3, 6] : .notChecked,
-                                              [1, 4, 7] : .notChecked,
-                                              [2, 5, 8] : .notChecked,
-                                              [0, 4, 8] : .notChecked,
-                                              [6, 4, 2] : .notChecked]
+//    var winPatterns = [[0, 1, 2],
+//                                [3, 4, 5],
+//                                [6, 7, 8],
+//                                [0, 3, 6],
+//                                [1, 4, 7],
+//                                [2, 5, 8],
+//                                [0, 4, 8],
+//                       [6, 4, 2]]
+    
+    let winPatterns: Set<Set<Int>> = [[0, 1, 2],
+                                     [3, 4, 5],
+                                     [6, 7, 8],
+                                     [0, 3, 6],
+                                     [1, 4, 7],
+                                     [2, 5, 8],
+                                     [0, 4, 8],
+                                     [6, 4, 2]]
+    
+    let minimumMoveToWin = 5
     
     
     private init() {}
@@ -40,14 +51,6 @@ class SettingsDataManager {
     private init() {}
 }
 
-
-
-
-enum WinnerState {
-    case notChecked
-    case failed
-    case win
-}
 
 
 struct ComputerParameter {

@@ -41,9 +41,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        generateFeedback(withHapticType: .rigid, whenLowPower: setting.lowPower)
-        
-//        setting.lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
+        generateFeedback(withHapticType: .rigid)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,14 +74,14 @@ class SettingsViewController: UIViewController {
     @IBAction func colorButtonAction(_ sender: UIButton) {
         unselectPreviousButton()
         makeButtonShining(sender)
-        generateFeedback(withHapticType: .soft, whenLowPower: setting.lowPower)
+        generateFeedback(withHapticType: .soft)
         setColorToModel(fromCurrentButton: sender)
         setBackgroundColor()
         disableButton(sender)
     }
     
     @IBAction func changeOpponentSegment(_ sender: UISegmentedControl) {
-        generateFeedback(withHapticType: .light, whenLowPower: setting.lowPower)
+        generateFeedback(withHapticType: .light)
         changeGameMode(withSegment: sender)
         hideOrShowComputerStack()
     }
@@ -98,7 +96,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed() {
-        generateFeedback(withHapticType: .rigid, whenLowPower: setting.lowPower)
+        generateFeedback(withHapticType: .rigid)
         delegate.setNewSettings(from: setting)
         dismiss(animated: true)
     }
